@@ -9,7 +9,7 @@ Here I present a third option, which I found preferable: instead of uploading yo
 This way your private data doesn't leave your PC, as the data is sent in the opposite direction.
 This is made possible thanks to great project of https://www.snpedia.com/.
 Based on scraping scripts you can find in this repo (but which you absolutely do not have to download or run yourself!) I've created a single file you need to download:
-bad-list-for-23andme.txt.gz
+[bad-list-for-23andme.txt.gz](https://github.com/qbolec/23andme-bad-snips/blob/master/bad-list-for-23andme.txt.gz)
 It contains the list of Snips that are likely to have "Bad" reputation according to info available in [SNPedia](https://www.snpedia.com/) at the moment of scraping.
 Any errors in this file are due to my stupidity.
 
