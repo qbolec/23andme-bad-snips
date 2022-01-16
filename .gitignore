@@ -1,0 +1,9 @@
+results/
+snips/
+genotypes/
+node_modules/
+genotypes.txt
+snips.txt
+common-genotypes.txt
+common-snips.txt
+bad-list-for-23andme.txt
