@@ -39,7 +39,7 @@ $ cat path/to/your/extracted_23andme_genome.txt | # load your genome file
 
 Caveats
 =======
-One again, I don't know much about genetics.
+Once again, I don't know much about genetics.
 This simple `join` isn't foolproof, obviously. Expect that you'll have to verify the results manually, and consult them with a doctor.
 For example:
 https://you.23andme.com/tools/data/?query=rs876659310
