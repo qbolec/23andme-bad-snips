@@ -1,3 +1,5 @@
+Purpose
+=======
 First of all, needless to say this is not a medical advice.
 Which you should be able to tell, because I'm some random developer on github, not your doctor.
 I've created this tool for my personal use, and there's no implied guarantee it will work for you, or that any medical or life decissions you'll make based on running it will be any good for you.
@@ -13,7 +15,9 @@ Based on scraping scripts you can find in this repo (but which you absolutely do
 It contains the list of Snips that are likely to have "Bad" reputation according to info available in [SNPedia](https://www.snpedia.com/) at the moment of scraping.
 Any errors in this file are due to my stupidity.
 
-Once you have downloaded it, open bash console (personally I use Git Bash on Windows) and run:
+Usage
+=====
+Once you have downloaded [bad-list-for-23andme.txt.gz](https://github.com/qbolec/23andme-bad-snips/blob/master/bad-list-for-23andme.txt.gz) and also downloaded and extracted your [raw genome](https://you.23andme.com/tools/data/download/), open bash console (personally I use Git Bash on Windows) and run:
 ```
 $ cat path/to/your/extracted_23andme_genome.txt | grep -e '^[^#]' | awk '{print $1, $4}' | sort -t ':' -k 1b,1 | join -i -t ':' <(gzip -dc bad-list-for-23andme.txt.gz | sort -t ':' -k 1b,1) - | sed -r 's@^([^ ]*) .*:(.*)$@https://bots.snpedia.com/index.php/\1\2@g'
 ```
@@ -33,7 +37,10 @@ $ cat path/to/your/extracted_23andme_genome.txt | # load your genome file
   sed -r 's@^([^ ]*) .*:(.*)$@https://bots.snpedia.com/index.php/\1\2@g' # for each match print a link to more info
 ```
 
-This isn't foolproof, obviously. Expect that you'll have to verify the results manually, and consult them with a doctor.
+Caveats
+=======
+One again, I don't know much about genetics.
+This simple `join` isn't foolproof, obviously. Expect that you'll have to verify the results manually, and consult them with a doctor.
 For example:
 https://you.23andme.com/tools/data/?query=rs876659310
 says I have  GAAAGGCCTTCTGGATTCT / GAAAGGCCTTCTGGATTCT, but the downloaded report says just:
@@ -46,5 +53,10 @@ The problem is that https://bots.snpedia.com/index.php/Rs876659310 shows that:
 and it's not obvious to me, which of the two `II` stands for.
 In such cases, and perhaps others, you can get a false-positive warning, that your `II` is might be bad.
 
+Another problem is that SNPedia can use a different refernce genome than 23andme.
 
+Yet another is that the script doesn't handle genes appearing or X and Y chromosomes.
+
+Licence
+=======
 This software, and the file to download is available under [Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License](https://creativecommons.org/licenses/by-nc-sa/3.0/us/).
