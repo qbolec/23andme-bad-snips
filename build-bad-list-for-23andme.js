@@ -50,7 +50,7 @@ const OPPOSITE = { G: "C",  C: "G",  T: "A",  A: "T",  D: "D",  I: "I" };
       if(orientation!==undefined){
         const badParts=genotype.match(/[(](.*);(.*)[)]/).slice(1).sort();
         handled.filter(result => {
-          const letters = result.split('').map(letter => info.orientation=='minus' ? OPPOSITE[letter] : letter).map(letter => letter=='D'?'-':letter).sort();
+          const letters = result.split('').map(letter => orientation=='minus' ? OPPOSITE[letter] : letter).map(letter => letter=='D'?'-':letter).sort();
           // The difficult part is to handle insertions, the "I"s
           const insertions=letters.filter(part => part=="I").length;
           if(!insertions){
